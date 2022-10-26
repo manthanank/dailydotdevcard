@@ -1,8 +1,10 @@
-# DevCard
+# DevCard And Bookmarks
+
+## DevCard :
 
 <a href="https://app.daily.dev/manthanank"><img src="https://github.com/manthanank/dev-card/blob/main/devcard.svg" width="400" alt="Manthan Ank's Dev Card"/></a>
 
-## Bookmarks
+## Bookmarks :
 
 <!--  daily.dev BOOKMARKS:START -->
 <!--  daily.dev BOOKMARKS:END -->
