@@ -1,3 +1,3 @@
 # DevCard
 
-[![Dev Card](/devcard.svg)](https://app.daily.dev/manthanank)
+[![Dev Card](/devcard.png)](https://app.daily.dev/manthanank)
