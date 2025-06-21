@@ -1,3 +1,18 @@
+# [2.0.0](https://github.com/manthanank/dailydotdevcard/compare/v1.5.0...v2.0.0) (2025-06-21)
+
+
+### Features
+
+* Update workflows, README, and documentation for daily.dev DevCard setup ([49175d9](https://github.com/manthanank/dailydotdevcard/commit/49175d9))
+* Automated devcard.png updates and maintenance ([a420430](https://github.com/manthanank/dailydotdevcard/commit/a420430))
+
+
+### BREAKING CHANGES
+
+* Major update to daily.dev DevCard setup and workflows
+
+
+
 # [1.5.0](https://github.com/manthanank/dailydotdevcard/compare/v1.4.0...v1.5.0) (2024-02-21)
 
 
