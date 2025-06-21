@@ -1,0 +1,56 @@
+name: Create Release on Tag
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get previous tag
+        id: prev-tag
+        run: |
+          PREV_TAG=$(git describe --tags --abbrev=0 HEAD~1 2>/dev/null || echo "")
+          echo "prev-tag=$PREV_TAG" >> $GITHUB_OUTPUT
+
+      - name: Generate release notes
+        id: release-notes
+        run: |
+          CURRENT_TAG=${GITHUB_REF#refs/tags/}
+          PREV_TAG=${{ steps.prev-tag.outputs.prev-tag }}
+          
+          echo "# Release $CURRENT_TAG" > release-notes.md
+          echo "" >> release-notes.md
+          echo "## What's Changed" >> release-notes.md
+          echo "" >> release-notes.md
+          
+          if [ -n "$PREV_TAG" ]; then
+            git log --pretty=format:"* %s (%h)" $PREV_TAG..HEAD >> release-notes.md
+            echo "" >> release-notes.md
+            echo "" >> release-notes.md
+            echo "## Full Changelog" >> release-notes.md
+            echo "https://github.com/${{ github.repository }}/compare/$PREV_TAG...$CURRENT_TAG" >> release-notes.md
+          else
+            git log --pretty=format:"* %s (%h)" >> release-notes.md
+          fi
+          
+          echo "notes-file=release-notes.md" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Release ${{ github.ref_name }}
+          body_path: ${{ steps.release-notes.outputs.notes-file }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
