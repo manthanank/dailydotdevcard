@@ -1,3 +1,7 @@
+## [2.1.2](https://github.com/manthanank/dailydotdevcard/compare/v2.1.1...v2.1.2) (2025-06-21)
+
+
+
 ## [2.1.1](https://github.com/manthanank/dailydotdevcard/compare/v2.1.0...v2.1.1) (2025-06-21)
 
 
@@ -21,15 +25,6 @@
 ### Features
 
 * Update main.yml ([589f4e1](https://github.com/manthanank/dailydotdevcard/commit/589f4e1688ad30f765e38e72dff086afcfc567da))
-
-
-
-# [1.4.0](https://github.com/manthanank/dailydotdevcard/compare/v1.3.0...v1.4.0) (2023-03-27)
-
-
-### Features
-
-* updated readme file ([e99da37](https://github.com/manthanank/dailydotdevcard/commit/e99da377b7455b8ad607764d20702364a7ccad9a))
 
 
 
