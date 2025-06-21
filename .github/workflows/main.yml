@@ -1,4 +1,4 @@
-name: DevCard
+name: daily-devcard
 
 permissions:
   contents: write
@@ -17,8 +17,11 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: devcard
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Generate DevCard
         uses: dailydotdev/action-devcard@3.0.0
         with:
           user_id: ${{ secrets.USER_ID }}
-          commit_message: "chore: update ${filename}"
+          commit_message: "chore: update devcard.png"

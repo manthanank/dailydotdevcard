@@ -1,4 +1,5 @@
 name: Releases
+
 on:
   push:
     branches:
@@ -7,22 +8,26 @@ on:
 jobs:
   changelog:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: conventional Changelog Action
+      - name: Generate Conventional Changelog
         id: changelog
-        uses: TriPSs/conventional-changelog-action@v3.7.1
+        uses: TriPSs/conventional-changelog-action@v4
         with:
-          github-token: ${{ secrets.PA_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           version-file: './releases.json'
+          output-file: 'CHANGELOG.md'
 
-      - name: create release
+      - name: Create Release
         uses: actions/create-release@v1
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
         env:
-          GITHUB_TOKEN: ${{ secrets.PA_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.changelog.outputs.tag }}
           release_name: ${{ steps.changelog.outputs.tag }}
